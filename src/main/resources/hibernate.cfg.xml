@@ -11,6 +11,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <mapping resource="user.xml"></mapping>
         <mapping resource="message.xml"></mapping>
     </session-factory>
