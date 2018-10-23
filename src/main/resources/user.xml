@@ -3,10 +3,10 @@
         "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="ru.af.messageService.User" table="user">
+    <class name="ru.af.entity.User" table="user">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="increment" />
+            <generator class="identity" />
         </id>
         <property name="name" type="java.lang.String">
             <column name="name" />

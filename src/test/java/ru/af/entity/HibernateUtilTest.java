@@ -1,7 +1,8 @@
-package ru.af.messageService;
+package ru.af.entity;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.af.hibernate.HibernateUtil;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -27,7 +28,6 @@ public class HibernateUtilTest {
     @Test
     public void insertMessage() {
         Message message = new Message();
-        // смысл теста, чтобы проверить что все поля объекта сохранились в БД
         Integer id =hibernateUtil.insertMessage(message);
         assertEquals(message, hibernateUtil.getMessageById(id));
     }
@@ -49,7 +49,7 @@ public class HibernateUtilTest {
     public void updateMessage() {
         Message message = new Message();
         message.setBody("body");
-        Integer id =hibernateUtil.insertMessage(message);
+        Integer id = hibernateUtil.insertMessage(message);
         String s = "newBody";
         hibernateUtil.updateMessage(message,s);
         message.setBody(s);

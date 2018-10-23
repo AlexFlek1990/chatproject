@@ -1,41 +1,24 @@
-package ru.af.messageService;
+package ru.af.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import java.util.Objects;
 
-@Entity
-@Table(name = "message",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+//@Entity
+//@Table(name = "message",
+//        uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class Message {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true, length = 11)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id", nullable = false, unique = true, length = 11)
     private int id;
 
-    @Column(name = "body", length = 20, nullable = true)
+//    @Column(name = "body", length = 20, nullable = true)
     private String body;
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", body='" + body + '\'' +
-                ", time=" + time +
-                ", userId=" + userId +
-                '}';
-    }
-
-    @Column(name = "time", length = 20, nullable = true)
+//    @Column(name = "time", length = 20, nullable = true)
     private long time;
 
-    @Column(name = "user_id", length = 20, nullable = true)
+//    @Column(name = "user_id", length = 20, nullable = true)
     private int userId;
 
     public int getId() {
@@ -85,5 +68,15 @@ public class Message {
     public int hashCode() {
 
         return Objects.hash(id, body, time, userId);
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", body='" + body + '\'' +
+                ", time=" + time +
+                ", userId=" + userId +
+                '}';
     }
 }

@@ -1,25 +1,18 @@
-package ru.af.messageService;
+package ru.af.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import java.util.Objects;
 
-@Entity
-@Table(name = "user",
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+//@Entity
+//@Table(name = "user",
+//        uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true, length = 11)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id", nullable = false, unique = true, length = 11)
     private int id;
 
-    @Column(name = "name", length = 20, nullable = true)
+//    @Column(name = "name", length = 20, nullable = true)
     private String name;
 
     public int getId() {
