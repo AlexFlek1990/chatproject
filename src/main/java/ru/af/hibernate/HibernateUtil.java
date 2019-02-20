@@ -5,24 +5,56 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import ru.af.entity.Message;
 import ru.af.entity.User;
 
 import java.util.List;
+import java.util.Properties;
 
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
+
     private static SessionFactory buildSessionFactory() {
-        try {
-            return new Configuration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
+    try {
+        Configuration configuration = new Configuration();
+
+        Properties props = PropertyHolder.loadProperties();
+
+        configuration.setProperties(props);
+        configuration.addAnnotatedClass(Message.class);
+        configuration.addAnnotatedClass(User.class);
+//        configuration.addXML("user.xml");
+//        configuration.addXML("message.xml");
+    
+
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
+                applySettings(configuration.getProperties()).build();
+        System.out.println("Hibernate Java Config serviceRegistry created");
+
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
+
+        return sessionFactory;
+    } catch (Throwable ex) {
+        System.err.println("Initial SessionFactory creation failed." + ex);
+        throw new ExceptionInInitializerError(ex);
     }
+}
+
+//    private static SessionFactory buildSessionFactory() {
+//        try {
+//            return new Configuration().configure().buildSessionFactory();
+//        } catch (Throwable ex) {
+//            System.err.println("Initial SessionFactory creation failed." + ex);
+//            throw new ExceptionInInitializerError(ex);
+//        }
+
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;

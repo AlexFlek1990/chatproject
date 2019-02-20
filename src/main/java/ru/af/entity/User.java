@@ -1,18 +1,19 @@
 package ru.af.entity;
 
+import javax.persistence.*;
 import java.util.Objects;
 
-//@Entity
-//@Table(name = "user",
-//        uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
+@Entity
+@Table(name = "user",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
 public class User {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id", nullable = false, unique = true, length = 11)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true, length = 11)
     private int id;
 
-//    @Column(name = "name", length = 20, nullable = true)
+    @Column(name = "name", length = 20, nullable = true)
     private String name;
 
     public int getId() {
