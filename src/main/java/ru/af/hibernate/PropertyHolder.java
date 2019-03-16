@@ -11,16 +11,16 @@ public class PropertyHolder {
         Properties prop = new Properties();
         InputStream input = null;
         try {
-            input = new FileInputStream("src/main/resources/db.properties");
+            input = new FileInputStream("src/main/resources/hibernate.properties");
             prop.load(input);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
             if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException(e);
                 }
             }
         }

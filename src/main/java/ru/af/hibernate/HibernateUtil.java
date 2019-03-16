@@ -12,7 +12,6 @@ import ru.af.entity.Message;
 import ru.af.entity.User;
 
 import java.util.List;
-import java.util.Properties;
 
 public class HibernateUtil {
 
@@ -23,14 +22,9 @@ public class HibernateUtil {
     try {
         Configuration configuration = new Configuration();
 
-        Properties props = PropertyHolder.loadProperties();
-
-        configuration.setProperties(props);
         configuration.addAnnotatedClass(Message.class);
         configuration.addAnnotatedClass(User.class);
-//        configuration.addXML("user.xml");
-//        configuration.addXML("message.xml");
-    
+
 
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().
@@ -42,19 +36,10 @@ public class HibernateUtil {
 
         return sessionFactory;
     } catch (Throwable ex) {
-        System.err.println("Initial SessionFactory creation failed." + ex);
+        ex.printStackTrace();
         throw new ExceptionInInitializerError(ex);
     }
 }
-
-//    private static SessionFactory buildSessionFactory() {
-//        try {
-//            return new Configuration().configure().buildSessionFactory();
-//        } catch (Throwable ex) {
-//            System.err.println("Initial SessionFactory creation failed." + ex);
-//            throw new ExceptionInInitializerError(ex);
-//        }
-
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;

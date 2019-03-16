@@ -1,12 +1,13 @@
 package ru.af.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "message",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"id"})})
-public class Message {
+public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

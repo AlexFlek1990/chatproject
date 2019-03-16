@@ -3,6 +3,7 @@ package ru.af.hibernate;
 // https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html
 
 import ru.af.entity.Message;
+import ru.af.entitymanager.EntityManagerUtil;
 import ru.af.hibernate.HibernateUtil;
 
 public class HibernateMain {
@@ -17,8 +18,9 @@ public class HibernateMain {
         m1.setId(3);
         m1.setTime(1537033429);
         m1.setUserId(1);
-        HibernateUtil hu = new HibernateUtil();
-        hu.insertMessage(m1);
+        EntityManagerUtil entityManagerUtilu = new EntityManagerUtil();
+        entityManagerUtilu.insertMessage(m1);
+        entityManagerUtilu.getMessageById(3);
 
 
 //        hu.insertUser(u1);
